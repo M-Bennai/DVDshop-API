@@ -10,15 +10,19 @@ categoryRouter.get("/all", async (req, res) => {
 });
 
 categoryRouter.post("/create", async (req, res) => {
-  console.log("req.body :>> ", req.body);
-  try {
-    const { category, dvd_id } = req.body;
-    const newCategory = await addCategory(category, dvd_id);
-    res.status(200).json({ msg: "success", newCategory });
-  } catch (error) {
-    console.log("error :>> ", error);
-    res.status(400).json({ msg: "an error was occured" });
-  }
+  const newCategory = await addCategory(req.body);
+  res.status(200).json(newCategory);
 });
+// categoryRouter.post("/create", async (req, res) => {
+//   console.log("req.body :>> ", req.body);
+//   try {
+//     const { category, dvd_id } = req.body;
+//     const newCategory = await addCategory(category, dvd_id);
+//     res.status(200).json({ msg: "success", newCategory });
+//   } catch (error) {
+//     console.log("error :>> ", error);
+//     res.status(400).json({ msg: "an error was occured" });
+//   }
+// });
 
 module.exports = categoryRouter;

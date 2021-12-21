@@ -2,7 +2,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("Actors", {
-      actor_id: {
+      id: {
         allowNull: false,
         primaryKey: true,
         defaultValue: Sequelize.UUIDV4,

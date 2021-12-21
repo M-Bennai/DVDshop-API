@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.Actor.belongsToMany(models.Dvd, { through: "Actor_dvd" });
+      models.Actor.belongsToMany(models.Dvd, {
+        as: "PlaysIn",
+        foreignKey: "ActorId",
+        through: "Actor_dvd",
+      });
     }
   }
   Actor.init(

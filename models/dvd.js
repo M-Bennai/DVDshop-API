@@ -9,7 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      models.Dvd.belongsToMany(models.Actor, { through: "Actor_Dvd" });
+      models.Dvd.belongsToMany(models.Actor, {
+        as: "Dvd",
+        foreignKey: "DvdId",
+        through: "asActor",
+      });
       models.Dvd.hasOne(models.Producer);
       models.Dvd.belongsTo(models.Category);
     }

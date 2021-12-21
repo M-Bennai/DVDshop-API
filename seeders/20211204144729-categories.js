@@ -8,7 +8,7 @@ module.exports = {
       "Categories",
       [
         {
-          id: uuidv4(),
+          CategoryId: uuidv4(),
           // dvdId: uuidv4(),
           name: "Science Fantasy",
           createdAt: new Date(),
