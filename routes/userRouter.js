@@ -6,7 +6,15 @@ const { addUser } = require("../controller/userController");
 const validateToken = require("../middleware/authMiddleware");
 
 userRouter.post("/register", async (req, res) => {
-  const { firstName, lastName, address, email, password, role } = req.body;
+  const {
+    firstName,
+    lastName,
+    address,
+    email,
+    password,
+    role,
+    image,
+  } = req.body;
   console.log("req.body :>> ", req.body);
   try {
     const findUser = await User.findOne({ where: { email: email } });
@@ -20,6 +28,7 @@ userRouter.post("/register", async (req, res) => {
         email,
         password: encryptedPassword,
         role,
+        image,
       });
       console.log("newUser :>> ", newUser);
       res.status(201).json({ msg: "User added succesfully", newUser });
@@ -58,7 +67,9 @@ userRouter.post("/login", async (req, res) => {
         {
           email: user.email,
           role: user.role,
-
+          firstName: user.firstName,
+          lastName: user.lastName,
+          address: user.address,
           id: user.id,
         },
         process.env.JWT_SECRET

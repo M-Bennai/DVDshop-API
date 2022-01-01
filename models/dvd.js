@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   Dvd.init(
     {
       name: DataTypes.STRING,
+      image: DataTypes.STRING,
       description: DataTypes.STRING,
       stock: DataTypes.STRING,
       release_date: DataTypes.STRING,

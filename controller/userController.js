@@ -2,13 +2,22 @@ const { User } = require("../models");
 const { v4: uuidv4 } = require("uuid");
 
 const userController = {
-  addUser: async ({ firstName, lastName, address, email, password, role }) => {
+  addUser: async ({
+    firstName,
+    lastName,
+    address,
+    email,
+    password,
+    role,
+    image,
+  }) => {
     if (role === "admin") {
       const newUserAdmin = await User.create({
         id: uuidv4(),
         firstName,
         lastName,
         email,
+        image,
         password,
         role,
       });
@@ -21,7 +30,7 @@ const userController = {
         address,
         email,
         password,
-
+        image,
         role,
       });
       return newUserClient;
