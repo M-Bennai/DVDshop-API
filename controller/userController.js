@@ -16,6 +16,7 @@ const userController = {
         id: uuidv4(),
         firstName,
         lastName,
+        address,
         email,
         image,
         password,
